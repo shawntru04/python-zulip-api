@@ -1,5 +1,6 @@
 import unittest
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock, patch
+
 import requests
 import zulip
 
@@ -39,8 +40,6 @@ class TestStaleConnectionRetry(unittest.TestCase):
 
         fresh_session = MagicMock()
         fresh_session.request.return_value = success_response
-
-        original_ensure_session = zulip.Client.ensure_session
 
         call_count = 0
 
